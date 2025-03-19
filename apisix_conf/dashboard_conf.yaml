@@ -1,0 +1,15 @@
+
+conf:
+  listen:
+    host: 0.0.0.0
+    port: 9000
+  etcd:
+    endpoints:
+      - etcd:2379
+  log:
+    level: info
+    filePath: /var/log/apisix-dashboard.log
+  authentication:
+    secret:
+      secret: dashboard-secret-key
+    expireTime: 3600

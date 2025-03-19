@@ -1,0 +1,12 @@
+{
+  "uri": "/*",
+  "plugins": {
+    "prometheus": {}
+  },
+  "upstream": {
+    "type": "roundrobin",
+    "nodes": {
+      "httpbin.org:80": 1
+    }
+  }
+}

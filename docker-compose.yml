@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  etcd:
+    image: bitnami/etcd:${ETCD_VERSION}
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    volumes:
+      - etcd_data:/bitnami/etcd
+
+  apisix:
+    image: apache/apisix:${APISIX_VERSION}-debian
+    depends_on:
+      - etcd
+    ports:
+      - "9080:9080"
+      - "9443:9443"
+    volumes:
+      - ./apisix_conf:/usr/local/apisix/conf
+    environment:
+      - APISIX_DEPLOYMENT_ETCD_HOST=etcd
+
+  apisix-dashboard:
+    image: apache/apisix-dashboard:${DASHBOARD_VERSION}-alpine
+    depends_on:
+      - etcd
+    ports:
+      - "9000:9000"
+    environment:
+      - APISIX_DEPLOYMENT_ETCD_HOST=etcd
+
+  openresty:
+    image: openresty/openresty:${OPENRESTY_VERSION}-alpine
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./openresty_conf:/usr/local/openresty/nginx/conf
+
+volumes:
+  etcd_data:
