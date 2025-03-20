@@ -89,6 +89,7 @@ services:
       - /data/apisix-gateway/prometheus:/prometheus
     ports:
       - "9090:9090"
+    user: "65534:65534"
     networks:
       apisix:
 
