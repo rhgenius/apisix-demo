@@ -4,3 +4,5 @@ notifiers:
   - name: email-notifier
     type: email
     uid: email-notifier-1
+    settings:
+      addresses: "rachmat.hidayat@cbi.id"
