@@ -21,8 +21,8 @@ conf:
     port: 9000          # `manager api` listening port
   etcd:
     endpoints:          # supports defining multiple etcd host addresses for an etcd cluster
-      - etcd:2379
-      - ::/0
+      - "http://etcd:2379"
+      - "http://::/0"
 
                         # etcd basic auth info
     # username: "root"    # ignore etcd username if not enable etcd auth
