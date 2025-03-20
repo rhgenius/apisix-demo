@@ -47,6 +47,11 @@ services:
       ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
     ports:
       - "2379:2379/tcp"
+    healthcheck:
+      test: ["CMD", "etcdctl", "endpoint", "health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     networks:
       apisix:
 
@@ -109,7 +114,8 @@ services:
       - "./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml"
       - /data/apisix-gateway/dashboard/data:/usr/local/apisix-dashboard/data
     depends_on:
-      - etcd
+      etcd:
+        condition: service_healthy
     networks:
       apisix:
 
