@@ -107,7 +107,7 @@ services:
       - "9000:9000"
     volumes:
       - "./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml"
-      - /data/apisix-gateway/dashboard:/usr/local/apisix-dashboard
+      - /data/apisix-gateway/dashboard/data:/usr/local/apisix-dashboard/data
     depends_on:
       - etcd
     networks:
