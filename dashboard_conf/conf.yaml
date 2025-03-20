@@ -22,7 +22,6 @@ conf:
   etcd:
     endpoints:          # supports defining multiple etcd host addresses for an etcd cluster
       - "http://etcd:2379"
-      - "http://::/0"
 
                         # etcd basic auth info
     # username: "root"    # ignore etcd username if not enable etcd auth
