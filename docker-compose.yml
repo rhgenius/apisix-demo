@@ -25,7 +25,8 @@ services:
       - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
       - /data/apisix-gateway/apisix/logs:/usr/local/apisix/logs
     depends_on:
-      - etcd
+      etcd:
+        condition: service_healthy
     ports:
       - "9180:9180/tcp"
       - "9080:9080/tcp"
