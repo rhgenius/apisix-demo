@@ -102,6 +102,7 @@ services:
       - "./grafana_conf/dashboards:/var/lib/grafana/dashboards"
       - "./grafana_conf/config/grafana.ini:/etc/grafana/grafana.ini"
       - /data/apisix-gateway/grafana:/var/lib/grafana
+    user: "472:472"
     networks:
       apisix:
   
