@@ -40,3 +40,6 @@ datasources:
    access: proxy
    url: http://prometheus:9090
    isDefault: true
+   basicAuth: true
+   basicAuthUser: prometheus_user
+   basicAuthPassword: prometheus_admin
