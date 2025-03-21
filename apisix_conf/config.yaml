@@ -54,7 +54,7 @@ deployment:
     timeout: 30
     auth:
       username: "root"
-      password: "P@ssw0rd"
+      password: "secure_password"
 
 plugins:
 - prometheus
