@@ -33,11 +33,11 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ["localhost:9090"]
+    basic_auth:
+      username: prometheus_user
+      password: prometheus_admin
   - job_name: "apisix"
     scrape_interval: 5s
     metrics_path: "/apisix/prometheus/metrics"
     static_configs:
       - targets: ["apisix:9091"]
-
-basic_auth_users:
-  prometheus_user: prometheus_user:$2y$10$KVQXjk46.hccQPRdwS1bJ.2zxNBcNNviWP1ZYMTYFgxBCwYXNeegu
