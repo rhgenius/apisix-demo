@@ -19,7 +19,6 @@ version: "3"
 
 services:
   apisix:
-    container_name: apisix
     image: apache/apisix:${APISIX_IMAGE_TAG:-3.11.0-debian}
     restart: always
     volumes:
@@ -37,29 +36,21 @@ services:
       apisix:
 
   etcd:
-    container_name: etcd
     image: bitnami/etcd:3.5.11
     restart: always
     volumes:
       - /data/apisix-gateway/etcd:/bitnami/etcd
     environment:
       ETCD_ENABLE_V2: "true"
-      ETCD_AUTH_ENABLED: "true"
-      ETCD_ROOT_PASSWORD: "secure_password"
+      ALLOW_NONE_AUTHENTICATION: "yes"
       ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
       ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
-      ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://0.0.0.0:2380"
-      ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2380"
-      ETCD_INITIAL_CLUSTER: "etcd=http://0.0.0.0:2380"
-      ETCD_INITIAL_CLUSTER_TOKEN: "etcd-cluster"
     ports:
-      - "2379:2379"
-      - "2380:2380"
+      - "2379:2379/tcp"
     networks:
       apisix:
 
   web1:
-    container_name: web1
     image: nginx:1.27.4-alpine3.21-perl
     restart: always
     volumes:
@@ -73,7 +64,6 @@ services:
       apisix:
 
   web2:
-    container_name: web2
     image: nginx:1.27.4-alpine3.21-perl
     restart: always
     volumes:
@@ -87,7 +77,6 @@ services:
       apisix:
 
   prometheus:
-    container_name: prometheus
     image: prom/prometheus:v2.25.0
     restart: always
     volumes:
@@ -100,7 +89,6 @@ services:
       apisix:
 
   grafana:
-    container_name: grafana
     image: grafana/grafana:7.3.7
     restart: always
     ports:
@@ -115,7 +103,6 @@ services:
       apisix:
   
   dashboard:
-    container_name: dashboard
     image: apache/apisix-dashboard:latest
     restart: always
     ports:
@@ -129,7 +116,6 @@ services:
       apisix:
 
   nginx:
-    container_name: nginx
     image: nginx:1.27.4-alpine3.21-perl
     restart: always
     ports:
@@ -145,6 +131,3 @@ services:
 networks:
   apisix:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.100.0/24

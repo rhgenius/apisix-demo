@@ -22,9 +22,9 @@ apisix:
     file_path: /dev/stderr
   enable_admin: true
   admin_key:
-  - name: admin
-    key: edd1c9f034335f136f87ad84b625c8f1
-    role: admin
+    - name: admin
+      key: edd1c9f034335f136f87ad84b625c8f1
+      role: admin
   enable_ipv6: false
   enable_debug: true
   enable_control: true
@@ -34,31 +34,27 @@ apisix:
 
 deployment:
   admin:
-    allow_admin:
-    # https://nginx.org/en/docs/http/ngx_http_access_module.html#allow
-    - 0.0.0.0/0 # We need to restrict ip access rules for security. 0.0.0.0/0 is for test.
+    allow_admin:               # https://nginx.org/en/docs/http/ngx_http_access_module.html#allow
+      - 0.0.0.0/0              # We need to restrict ip access rules for security. 0.0.0.0/0 is for test.
 
     admin_key:
-    - name: "admin"
-      key: edd1c9f034335f136f87ad84b625c8f1
-      role: admin # admin: manage all configuration data
+      - name: "admin"
+        key: edd1c9f034335f136f87ad84b625c8f1
+        role: admin                 # admin: manage all configuration data
 
-    - name: "viewer"
-      key: 4054f7cf07e344346cd3f287985e76a2
-      role: viewer
+      - name: "viewer"
+        key: 4054f7cf07e344346cd3f287985e76a2
+        role: viewer
 
   etcd:
-    host:
-      - "http://etcd:2379"
-    prefix: "/apisix"
-    timeout: 30
-    auth:
-      username: "root"
-      password: "secure_password"
+    host:                           # it's possible to define multiple etcd hosts addresses of the same etcd cluster.
+      - "http://etcd:2379"          # multiple etcd address
+    prefix: "/apisix"               # apisix configurations prefix
+    timeout: 30                     # 30 seconds
 
 plugins:
-- prometheus
-- cors
+  - prometheus
+  - cors
 
 plugin_attr:
   prometheus:
