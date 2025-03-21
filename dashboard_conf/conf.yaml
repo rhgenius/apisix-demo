@@ -22,8 +22,6 @@ conf:
   etcd:
     endpoints:          # supports defining multiple etcd host addresses for an etcd cluster
       - "http://etcd:2379"
-    username: "root"    # etcd username
-    password: "123456"  # etcd password
   log:
     error_log:
       level: warn       # supports levels, lower to higher: debug, info, warn, error, panic, fatal
