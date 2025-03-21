@@ -46,11 +46,11 @@ deployment:
         key: 4054f7cf07e344346cd3f287985e76a2
         role: viewer
 
-etcd:
-  endpoints:
-    - "http://etcd:2379"
-  prefix: "/apisix"
-  timeout: 30
+  etcd:
+    host:                           # it's possible to define multiple etcd hosts addresses of the same etcd cluster.
+      - "http://etcd:2379"          # multiple etcd address
+    prefix: "/apisix"               # apisix configurations prefix
+    timeout: 30                     # 30 seconds
 
 plugins:
   - cors
