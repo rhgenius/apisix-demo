@@ -54,7 +54,7 @@ deployment:
     timeout: 30
     auth:
       username: "root"
-      password: "your_secure_password"
+      password: "etcd_secure_password"
 
 plugins:
 - prometheus
