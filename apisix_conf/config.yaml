@@ -53,8 +53,11 @@ deployment:
     timeout: 30                     # 30 seconds
 
 plugins:
-  - prometheus
   - cors
+  - prometheus
+  - key-auth
+  - jwt-auth
+  - limit-count
 
 plugin_attr:
   prometheus:
