@@ -52,15 +52,19 @@ deployment:
     prefix: "/apisix"               # apisix configurations prefix
     timeout: 30                     # 30 seconds
 
+plugins:
+  - prometheus
+  - cors
+
 plugin_attr:
   prometheus:
     export_addr:
       ip: "0.0.0.0"
       port: 9091
-
-plugins:
-  - prometheus
-  - cors
-  - key-auth
-  - basic-auth
-  - jwt-auth
+  cors:
+    allow_origins: "*"
+    allow_methods: "GET,POST,PUT,DELETE,PATCH,HEAD,OPTIONS"
+    allow_headers: "*"
+    expose_headers: "*"
+    max_age: 3600
+    allow_credentials: true
