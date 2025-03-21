@@ -22,6 +22,8 @@ conf:
   etcd:
     endpoints:          # supports defining multiple etcd host addresses for an etcd cluster
       - "http://etcd:2379"
+    prefix: "/apisix" # apisix configurations prefix
+    timeout: 30 # 30 seconds
 
                         # etcd basic auth info
     # username: "root"    # ignore etcd username if not enable etcd auth
