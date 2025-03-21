@@ -42,7 +42,7 @@ services:
       - /data/apisix-gateway/etcd:/bitnami/etcd
     environment:
       ETCD_ENABLE_V2: "true"
-      ETCD_ROOT_PASSWORD: "etcd_secure_password"
+      ETCD_ROOT_PASSWORD: "P@ssw0rd"
       ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
       ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
       ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://0.0.0.0:2380"

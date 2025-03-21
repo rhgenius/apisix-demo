@@ -25,7 +25,7 @@ conf:
     prefix: "/apisix"
     timeout: 30
     username: "root"
-    password: "etcd_secure_password"
+    password: "P@ssw0rd"
 
   log:
     error_log:
