@@ -55,6 +55,7 @@ deployment:
 plugins:
   - prometheus
   - cors
+  - server-info
 
 plugin_attr:
   prometheus:
