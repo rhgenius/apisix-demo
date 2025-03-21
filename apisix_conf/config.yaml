@@ -57,6 +57,8 @@ plugins:
   - cors
   - server-info
   - basic-auth
+  - key-auth
+  - jwt-auth
 
 plugin_attr:
   prometheus:
