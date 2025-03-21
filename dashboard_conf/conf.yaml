@@ -20,14 +20,13 @@ conf:
     host: 0.0.0.0     # `manager api` listening ip or host name
     port: 9000          # `manager api` listening port
   etcd:
-    endpoints:          # supports defining multiple etcd host addresses for an etcd cluster
+    endpoints:
       - "http://etcd:2379"
-    prefix: "/apisix" # apisix configurations prefix
-    timeout: 30 # 30 seconds
+    prefix: "/apisix"
+    timeout: 30
+    username: "root"
+    password: "your_secure_password"
 
-                        # etcd basic auth info
-    # username: "root"    # ignore etcd username if not enable etcd auth
-    # password: "123456"  # ignore etcd password if not enable etcd auth
   log:
     error_log:
       level: warn       # supports levels, lower to higher: debug, info, warn, error, panic, fatal
