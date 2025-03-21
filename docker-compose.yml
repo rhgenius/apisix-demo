@@ -42,10 +42,15 @@ services:
       - /data/apisix-gateway/etcd:/bitnami/etcd
     environment:
       ETCD_ENABLE_V2: "true"
-      ETCD_AUTH_TOKEN: "jwt,priv-key=/etc/etcd/auth/jwt.pub,pub-key=/etc/etcd/auth/jwt.pem,sign-method=RS256,ttl=10m"
-      ETCD_ROOT_PASSWORD: "etcd_secure_password"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://0.0.0.0:2380"
+      ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2380"
+      ETCD_INITIAL_CLUSTER: "etcd=http://0.0.0.0:2380"
+      ETCD_INITIAL_CLUSTER_TOKEN: "etcd-cluster"
     ports:
-      - "2379:2379/tcp"
+      - "2379:2379"
+      - "2380:2380"
     networks:
       apisix:
 
