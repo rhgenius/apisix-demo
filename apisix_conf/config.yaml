@@ -47,14 +47,14 @@ deployment:
       key: 4054f7cf07e344346cd3f287985e76a2
       role: viewer
 
-  etcd:
-    host:
-      - "http://etcd:2379"
-    prefix: "/apisix"
-    timeout: 30
-    auth:
-      username: "root"
-      password: "P@ssw0rd"
+etcd:
+  host:
+    - "http://etcd:2379"
+  prefix: "/apisix"
+  timeout: 30
+  auth:
+    username: "root"
+    password: "P@ssw0rd"
 
 plugins:
 - prometheus
